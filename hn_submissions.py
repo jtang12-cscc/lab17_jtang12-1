@@ -1,3 +1,8 @@
+# Lab 17: Refactor code in ‘hn_submissions.py’
+# Name: Justin Tang
+# Date: 5/9/2025
+# Relevant Comments: A lot easier than I thought.
+
 from operator import itemgetter
 
 import requests
@@ -11,6 +16,7 @@ print(f"Status code: {r.status_code}")
 submission_ids = r.json()
 submission_dicts = []
 for submission_id in submission_ids[:30]:
+
     try:
     # Make a new API call for each submission.
         url = f"https://hacker-news.firebaseio.com/v0/item/{submission_id}.json"
@@ -23,7 +29,7 @@ for submission_id in submission_ids[:30]:
             'title': response_dict['title'],
             'hn_link': f"https://news.ycombinator.com/item?id={submission_id}",
             'comments': response_dict['descendants'],
-    }
+        }
         submission_dicts.append(submission_dict)
 
         submission_dicts = sorted(submission_dicts, key=itemgetter('comments'),
