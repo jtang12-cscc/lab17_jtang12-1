@@ -16,7 +16,12 @@ print(f"Status code: {r.status_code}")
 submission_ids = r.json()
 submission_dicts = []
 for submission_id in submission_ids[:30]:
+    """
 
+    for submission_id in submission_ids[:30] (input): This function processes all information via a try-except
+    function and sees if any KeyErrors exist here.
+
+    """
     try:
     # Make a new API call for each submission.
         url = f"https://hacker-news.firebaseio.com/v0/item/{submission_id}.json"
@@ -39,6 +44,14 @@ for submission_id in submission_ids[:30]:
        print("{response_dict} cannot be implemented here!")
 
 for submission_dict in submission_dicts:
+
+    """
+    
+    for submission_dict in submission_dicts (print): This function prints out results for the output that
+    in turn, are determined by the inputs-outputs from the submission_dict dictionary.
+
+    """
+
     print(f"\nTitle: {submission_dict['title']}")
     print(f"Discussion link: {submission_dict['hn_link']}")
     print(f"Comments: {submission_dict['comments']}")
